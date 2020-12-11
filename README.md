@@ -21,3 +21,9 @@ DB 일부 수정(필요없는 정보 삭제 및 table간 Club명 일치 작업)
 
 DB 2차 일부 수정(table간 Club명 일치 작업)
 
+4th commit 12/11
+
+DB 3차 일부 수정(table간 선수명, club명 일치 작업 마무리 및 선수명,club명에 들어간 특수문자 제거)
+football_transfer_project.py 작성 
+-Selet a League -League(Bundesliga,EPL ..)클릭 후 url창에 마지막에 /등수 추가하면 해당 구단의 선수정보 확인
+ex)http://127.0.0.1:5000/football_transfer/select_league/bundesliga/1 -> FC Bayern의 선수정보 출력

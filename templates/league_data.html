@@ -1,0 +1,27 @@
+<!doctype HTML>
+<html>
+    <body>
+        <table border="1">
+            <th>Rate</th>
+            <th>Club Name</th>
+            <th>Stadium Name</th>
+            <th>Capacity</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
+            <th>Pts</th>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.Rate }}</td>
+                <td>{{ item.Fname }}</td>
+                <td>{{ item.Sname }}</td>
+                <td>{{ item.Capacity }}</td>
+                <td>{{ item.GF }}</td>
+                <td>{{ item.GA }}</td>
+                <td>{{ item.GD }}</td>
+                <td>{{ item.Pts }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

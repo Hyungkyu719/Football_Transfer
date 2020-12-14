@@ -3,35 +3,28 @@
     <head>
         <style>
             h1 {
+                font-size: 100px;
+                text-align: center;
+            }
+            a {
                 font-size: 50px;
+                text-align: center;
+                width: 300px;
+                border: 5px solid green;
+                border-radius: 20px;
+                padding: 20px 20px 20px 20px;
+                margin: 750px;
             }
         </style>
     </head>
     <body>
         <h1>Transfer Data</h1>
-        <table border="1">
-            <th>Player</th>
-            <th>Window</th>
-            <th>Position</th>
-            <th>Country</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>League</th>
-            {% for item in items %}
-            <tr>
-                <td>{{ item.Player }}</td>
-                <td>{{ item.Window }}</td>
-                <td>{{ item.Position }}</td>
-                <td>{{ item.Country }}</td>
-                <td>{{ item.From }}</td>
-                <td>{{ item.To }}</td>
-                <td>{{ item.Description }}</td>
-                <td>{{ item.Price }}</td>
-                <td>{{ item.League }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <br><br><br><br>
+        <a href={{url_for('full_transfer_data')}}>Full Transfer Data</a>
+        <br><br><br><br>
+        <a href={{url_for('search_player')}}>Search Player</a>
+        <br><br><br><br>
+        <a href={{url_for('search_team')}}>Search Club</a>
+        <br><br><br><br>
     </body>
 </html>

@@ -1,0 +1,47 @@
+<!doctype HTML>
+<html>
+    <body>
+
+        <h1>Team Data</h1>
+        {% if league == 'seriea' %}
+        <form action= "{{url_for('seriea')}}" method = 'POST'>
+        {% elif league == 'epl' %}
+        <form action= "{{url_for('epl')}}" method = 'POST'>
+        {% elif league == 'bundesliga' %}
+        <form action= "{{url_for('bundesliga')}}" method = 'POST'>
+        {% elif league == 'laliga' %}
+        <form action= "{{url_for('laliga')}}" method = 'POST'>
+        {% else %}
+        <form action= "{{url_for('ligue1')}}" method = 'POST'>
+        {% endif %}
+            <p>Search for Player</p>
+            <input id='name' type = 'text' name = 'name'>
+            <input type='submit', value='Search'>
+        </form>
+        
+        <table border="1">
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Club</th>
+            <th>Position</th>
+            <th>Clubjoin Date</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Preferred Foot</th>
+            <th>Birth</th>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.Name }}</td>
+                <td>{{ item.Nationality }}</td>
+                <td>{{ item.Club }}</td>
+                <td>{{ item.Position }}</td>
+                <td>{{ item.Clubjoin }}</td>
+                <td>{{ item.Height }}</td>
+                <td>{{ item.Weight }}</td>
+                <td>{{ item.PrefferedFoot }}</td>
+                <td>{{ item.Birth }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        h1 {
+            font-size: 50px;
+        }
+    </style>
+ </head>
 <body>
     <h1>Transfer Data</h1>
-
+    {% if mode =='player' %}
     <form action= "{{url_for('search_player')}}" method = 'POST'>
-        <p>Search for Player</p>
+    <p>Search for player name</p>
+    {% elif mode =='team' %}
+    <form action= "{{url_for('search_team')}}" method = 'POST'>
+    <p>Search for club name</p>
+    {% elif mode =='league' %}
+    <form action= "{{url_for('search_league')}}" method = 'POST'>
+    <p>Search for league name</p>
+    {% endif %}
         <input id='name' type = 'text' name = 'name'>
         <input type='submit', value='Search'>
+    <br><br>
     </form>
 
     <table border="1">

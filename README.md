@@ -39,3 +39,11 @@ DB 4차 일부 수정(League table 생성하여 기존의 EPL,Bundesliga,LaLiga,
 url에 직접 타이핑하여 선수정보 확인하는거에서 팀명으로 검색하도록 변경
 
 Transfer data또한 선수명, 팀명으로 검색하는 기능 추가
+
+6th commit 12/15
+
+DB 5차 일부 수정(table에 KEY제약조건 추가)
+
+html 파일 병합 작업(기존 10개에서 5개로 병합)
+
+python code 최종정리(Transfer data에 리그명으로 검색하는 기능 추가 및 League Data 선택문구에서 이미지로 변경)

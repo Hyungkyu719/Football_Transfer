@@ -1,0 +1,61 @@
+<!doctype HTML>
+<html>
+    <head>
+        <style>
+            h1 {
+                font-size: 100px;
+                text-align: center;
+            }
+        {% if data == 'transfer' %}
+            a {
+                font-size: 50px;
+                text-align: center;
+                width: 300px;
+                border: 5px solid green;
+                border-radius: 20px;
+                padding: 20px 20px 20px 20px;
+                margin: 750px;
+            }
+        {% elif data == 'league' %}
+            a {
+
+            }
+        {% endif %}
+        </style>
+    </head>
+    <body style="text-align: center;">
+        {% if data == 'transfer' %}
+        <h1>Select Mode</h1>
+        <br><br>
+        <a href={{url_for('full_transfer_data')}}>Show all Transfer Data</a>
+        <br><br><br><br><br><br>
+        <a href={{url_for('search_player')}}>Search Player Name</a>
+        <br><br><br><br><br><br>
+        <a href={{url_for('search_team')}}>Search Club Name</a>
+        <br><br><br><br><br><br>
+        <a href={{url_for('search_league')}}>Search League Name</a>
+        <br><br><br><br><br><br>
+        {% elif data == 'league' %}
+        <h1>Select a League</h1>
+            <a href={{url_for('bundesliga')}}>
+            <img src= "https://upload.wikimedia.org/wikipedia/ko/thumb/d/df/Bundesliga_logo_%282017%29.svg/300px-Bundesliga_logo_%282017%29.svg.png" style="display: block; margin: 0 auto; width:250px; height:200px;">
+            </a>
+        <br><br>
+            <a href={{url_for('epl')}}>
+            <img src="https://upload.wikimedia.org/wikipedia/ko/7/73/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A6%AC%EA%B7%B8_%EB%A1%9C%EA%B3%A0.png" style="display: block; margin: 0 auto; width:250px; height:150px;">
+            </a>
+        <br><br>
+            <a href={{url_for('laliga')}}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LaLiga.svg/426px-LaLiga.svg.png" style="display: block; margin: 0 auto; width:200px; height:200px;">
+            </a>
+        <br><br>
+            <a href={{url_for('ligue1')}}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ligue1.svg/216px-Ligue1.svg.png" style="display: block; margin: 0 auto; width:200px; height:200px;">
+            </a>
+        <br><br>
+            <a href={{url_for('seriea')}}>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Serie_A_logo_%282019%29.svg/125px-Serie_A_logo_%282019%29.svg.png" style="display: block; margin: 0 auto; width:150px; height:200px;">
+            </a>
+        {% endif %}
+    </body>
+</html>

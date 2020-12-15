@@ -3,6 +3,7 @@
     <body>
 
         <h1>Team Data</h1>
+        <br><br>
         {% if league == 'seriea' %}
         <form action= "{{url_for('seriea')}}" method = 'POST'>
         {% elif league == 'epl' %}
@@ -14,11 +15,13 @@
         {% else %}
         <form action= "{{url_for('ligue1')}}" method = 'POST'>
         {% endif %}
-            <p>Search for Player</p>
+            <p>Search for Club</p>
             <input id='name' type = 'text' name = 'name'>
             <input type='submit', value='Search'>
+        <br><br>
         </form>
         
+        {% if mode == 'show' %}
         <table border="1">
             <th>Name</th>
             <th>Nationality</th>
@@ -43,5 +46,29 @@
             </tr>
             {% endfor %}
         </table>
+        {% elif mode == 'find' %}
+        <table border="1">
+            <th>Rate</th>
+            <th>Club Name</th>
+            <th>Stadium Name</th>
+            <th>Capacity</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
+            <th>Pts</th>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.Rate }}</td>
+                <td>{{ item.Fname }}</td>
+                <td>{{ item.Sname }}</td>
+                <td>{{ item.Capacity }}</td>
+                <td>{{ item.GF }}</td>
+                <td>{{ item.GA }}</td>
+                <td>{{ item.GD }}</td>
+                <td>{{ item.Pts }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
     </body>
 </html>

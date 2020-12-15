@@ -10,7 +10,7 @@ def football_transfer():
 
 @app.route('/football_transfer/transfer_data')
 def transfer_data():
-    return render_template('transfer_data.html')
+    return render_template('select_data_type.html',data='transfer')
 
 @app.route('/football_transfer//transfer_data/full_transfer_data')
 def full_transfer_data():
@@ -22,12 +22,12 @@ def full_transfer_data():
     db.close()
     return render_template('full_transfer_data.html', items=items)
 
-@app.route('/football_transfer/select_league')
-def select_league():
-    return render_template('select_league.html')
+@app.route('/football_transfer/league_data')
+def league_data():
+    return render_template('select_data_type.html',data='league')
 
 
-@app.route('/football_transfer/select_league/ligue1',methods=['GET','POST'])
+@app.route('/football_transfer/league_data/ligue1',methods=['GET','POST'])
 def ligue1():
     ligue1=f"Ligue1"
     if request.method == 'POST' :
@@ -36,10 +36,10 @@ def ligue1():
         db.row_factory = sqlite3.Row
         team=f"%{team}%"
         items = db.execute(
-        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :ligue1 and Club like :team',{"ligue1":ligue1, "team":team}
+        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :ligue1 and Club like :team order by club',{"ligue1":ligue1, "team":team}
         ).fetchall()
         db.close()
-        return render_template('show_team.html',league='ligue1', items=items)
+        return render_template('show_team.html',league='ligue1', mode='show', items=items)
     else :
         db = sqlite3.connect("Football_transfer.db")
         db.row_factory = sqlite3.Row
@@ -47,9 +47,9 @@ def ligue1():
         'SELECT * FROM League WHERE Lname = :ligue1', {"ligue1":ligue1}
         ).fetchall()
         db.close()
-        return render_template('find_team.html', league='ligue1', items=items)
+        return render_template('show_team.html', league='ligue1', mode='find', items=items)
 
-@app.route('/football_transfer/select_league/laliga',methods=['GET','POST'])
+@app.route('/football_transfer/league_data/laliga',methods=['GET','POST'])
 def laliga():
     laliga=f"LaLiga"
     if request.method == 'POST' :
@@ -58,10 +58,10 @@ def laliga():
         db.row_factory = sqlite3.Row
         team=f"%{team}%"
         items = db.execute(
-        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :laliga and Club like :team',{"laliga":laliga, "team":team}
+        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :laliga and Club like :team order by club',{"laliga":laliga, "team":team}
         ).fetchall()
         db.close()
-        return render_template('show_team.html',league='laliga', items=items)
+        return render_template('show_team.html',league='laliga', mode='show', items=items)
     else :
         db = sqlite3.connect("Football_transfer.db")
         db.row_factory = sqlite3.Row
@@ -69,9 +69,9 @@ def laliga():
         'SELECT * FROM League WHERE Lname = :laliga', {"laliga":laliga}
         ).fetchall()
         db.close()
-        return render_template('find_team.html', league='laliga', items=items)
+        return render_template('show_team.html', league='laliga', mode='find', items=items)
 
-@app.route('/football_transfer/select_league/epl',methods=['GET','POST'])
+@app.route('/football_transfer/league_data/epl',methods=['GET','POST'])
 def epl():
     epl=f"EPL"
     if request.method == 'POST' :
@@ -80,10 +80,10 @@ def epl():
         db.row_factory = sqlite3.Row
         team=f"%{team}%"
         items = db.execute(
-        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :epl and Club like :team',{"epl":epl, "team":team}
+        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :epl and Club like :team order by club',{"epl":epl, "team":team}
         ).fetchall()
         db.close()
-        return render_template('show_team.html',league='epl', items=items)
+        return render_template('show_team.html',league='epl', mode='show', items=items)
     else :
         db = sqlite3.connect("Football_transfer.db")
         db.row_factory = sqlite3.Row
@@ -91,10 +91,10 @@ def epl():
         'SELECT * FROM League WHERE Lname = :epl', {"epl":epl}
         ).fetchall()
         db.close()
-        return render_template('find_team.html', league='epl', items=items)
+        return render_template('show_team.html', league='epl', mode='find', items=items)
 
 
-@app.route('/football_transfer/select_league/bundesliga',methods=['GET','POST'])
+@app.route('/football_transfer/league_data/bundesliga',methods=['GET','POST'])
 def bundesliga():
     bundesliga=f"Bundesliga"
     if request.method == 'POST' :
@@ -103,10 +103,10 @@ def bundesliga():
         db.row_factory = sqlite3.Row
         team=f"%{team}%"
         items = db.execute(
-        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :bundesliga and Club like :team',{"bundesliga":bundesliga, "team":team}
+        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :bundesliga and Club like :team order by club',{"bundesliga":bundesliga, "team":team}
         ).fetchall()
         db.close()
-        return render_template('show_team.html',league='bundesliga', items=items)
+        return render_template('show_team.html',league='bundesliga', mode='show', items=items)
     else :
         db = sqlite3.connect("Football_transfer.db")
         db.row_factory = sqlite3.Row
@@ -114,9 +114,9 @@ def bundesliga():
         'SELECT * FROM League WHERE Lname= :bundesliga', {"bundesliga":bundesliga}
         ).fetchall()
         db.close()
-        return render_template('find_team.html', league='bundesliga', items=items)
+        return render_template('show_team.html', league='bundesliga', mode='find', items=items)
 
-@app.route('/football_transfer/select_league/seriea',methods=['GET','POST'])
+@app.route('/football_transfer/league_data/seriea',methods=['GET','POST'])
 def seriea():
     seriea=f"SerieA"
     if request.method == 'POST' :
@@ -125,10 +125,10 @@ def seriea():
         db.row_factory = sqlite3.Row
         team=f"%{team}%"
         items = db.execute(
-        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :seriea and Club like :team',{"seriea":seriea, "team":team}
+        'SELECT * FROM FullData,League WHERE League.Fname = FullData.Club and Lname = :seriea and Club like :team order by club',{"seriea":seriea, "team":team}
         ).fetchall()
         db.close()
-        return render_template('show_team.html',league='seriea', items=items)
+        return render_template('show_team.html',league='seriea', mode='show', items=items)
     else :
         db = sqlite3.connect("Football_transfer.db")
         db.row_factory = sqlite3.Row
@@ -136,7 +136,7 @@ def seriea():
         'SELECT * FROM League WHERE Lname = :seriea', {"seriea":seriea}
         ).fetchall()
         db.close()
-        return render_template('find_team.html', league='seriea', items=items)
+        return render_template('show_team.html', league='seriea', mode='find', items=items)
     
 
 @app.route('/football_transfer/transfer_data/search_player',methods=['GET','POST'])
@@ -150,10 +150,11 @@ def search_player():
         'SELECT * FROM transfer_data WHERE player like :player', {"player":player}
         ).fetchall()
         db.close()
-        return render_template('search_player.html', items=items)
+        return render_template('search_name.html', mode='player', items=items)
     
     else :
-        return render_template('search_player.html')
+        return render_template('search_name.html', mode='player')
+
 
 @app.route('/football_transfer/transfer_data/search_team',methods=['GET','POST'])
 def search_team():
@@ -166,10 +167,27 @@ def search_team():
         'SELECT * FROM transfer_data WHERE "TO" like :team', {"team":team}
         ).fetchall()
         db.close()
-        return render_template('search_team.html', items=items)
+        return render_template('search_name.html',mode='team', items=items)
     
     else :
-        return render_template('search_team.html')
+        return render_template('search_name.html',mode='team')
+
+
+@app.route('/football_transfer/transfer_data/search_league',methods=['GET','POST'])
+def search_league():
+    if request.method == 'POST' :
+        league = request.form['name']
+        db = sqlite3.connect("Football_transfer.db")
+        db.row_factory = sqlite3.Row
+        league=f"%{league}%"
+        items = db.execute(
+        'SELECT * FROM transfer_data WHERE league like :league', {"league":league}
+        ).fetchall()
+        db.close()
+        return render_template('search_name.html',mode='league', items=items)
+    
+    else :
+        return render_template('search_name.html',mode='league')
 
 
 if __name__ == '__main__':
